@@ -1,18 +1,18 @@
-import React, {useState} from 'react';
-import Header from './components/Header';
-import Dialog from './components/Dialog';
-import Sender from './components/Sender';
+import React, { useState } from "react";
+import Header from "./components/Header";
+import Dialog from "./components/Dialog";
+import Sender from "./components/Sender";
 
 const App = () => {
-  const [message, addMessege] = useState(null);
+  const [message, addMessage] = useState(null);
 
   return (
-    <div className='container'>
+    <div className="container">
       <Header />
-      <Dialog newMessege = {message}/>
-      <Sender onAddMessege = {addMessege}/>
+      <Dialog newMessage={message} />
+      <Sender onAddMessage={addMessage} />
     </div>
-  )
-}
+  );
+};
 
 export default App;

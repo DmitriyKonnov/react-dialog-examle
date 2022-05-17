@@ -1,4 +1,4 @@
-import React, {useReducer, useEffect, useRef} from "react";
+import React, { useReducer, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
 import Item from "./Item";
@@ -9,7 +9,7 @@ import data from "../../data";
 
 import "./styles.css";
 
-const Dialog = ({newMessage}) => {
+const Dialog = ({ newMessage }) => {
   const dialogRef = useRef();
   const [state, dispatch] = useReducer(reducer, {
     messages: data,
@@ -26,7 +26,7 @@ const Dialog = ({newMessage}) => {
         dispatch({
           type: "update-status",
           payload: {
-            id:newMessage.id,
+            id: newMessage.id,
             status: "readed",
           },
         });
@@ -36,7 +36,7 @@ const Dialog = ({newMessage}) => {
 
   useEffect(() => {
     dialogRef.current.scrollTop = dialogRef.current.scrollHeight;
-  }, [state.messages.length])
+  }, [state.messages.length]);
 
   const onRemove = (id) => {
     dispatch({
@@ -45,13 +45,13 @@ const Dialog = ({newMessage}) => {
     });
   };
 
-  const normalizedDialog = normalizeDialog(data);
+  const normalizedDialog = normalizeDialog(state.messages);
 
   return (
     <div className="dialog">
-      <div className="overflow" ref = {dialogRef}>
+      <div className="overflow" ref={dialogRef}>
         {normalizedDialog.map((item) => (
-          <Item {...item} key={item.id} onRemove={onRemove}/>
+          <Item {...item} key={item.id} onRemove={onRemove} />
         ))}
       </div>
     </div>

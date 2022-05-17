@@ -2,25 +2,24 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./styles.css";
 
-const Sender = ({onAddMessege}) => {
+const Sender = ({ onAddMessage }) => {
   const [value, setValue] = useState("");
 
   const onChange = (event) => setValue(event.target.value);
   const onSubmit = (event) => {
     event.preventDefault();
 
-    onAddMessege({
+    onAddMessage({
       id: Date.now(),
-      avatar: "https://sun9-58.userapi.com/c836638/v836638514/867c/SPMigNB8gw0.jpg",
-      messege: value,
+      avatar:
+        "https://sun9-58.userapi.com/c836638/v836638514/867c/SPMigNB8gw0.jpg",
+      message: value,
       date: new Date().toISOString(),
       is: "my",
-      status: "send",
+      status: "sended",
     });
-    setValue("")
+    setValue("");
   };
-
-
 
   return (
     <form className="sender" onSubmit={onSubmit}>
@@ -36,7 +35,7 @@ const Sender = ({onAddMessege}) => {
 };
 
 Sender.propTypes = {
-  onAddMessege: PropTypes.func.isRequired,
-}
+  onAddMessage: PropTypes.func.isRequired,
+};
 
 export default Sender;
